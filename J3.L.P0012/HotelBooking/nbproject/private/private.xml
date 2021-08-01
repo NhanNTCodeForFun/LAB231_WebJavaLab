@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/E:/CN5/LAB231/HotelBooking/src/java/nhannt/util/SendingEmail.java</file>
+            <file>file:/E:/CN5/LAB231/HotelBooking/src/java/nhannt/servlet/ViewCartServlet.java</file>
+            <file>file:/E:/CN5/LAB231/HotelBooking/web/WEB-INF/log4j.properties</file>
+            <file>file:/E:/CN5/LAB231/HotelBooking/src/java/nhannt/util/DBHelper.java</file>
+            <file>file:/E:/CN5/LAB231/HotelBooking/web/createDiscountCode.jsp</file>
+            <file>file:/E:/CN5/LAB231/HotelBooking/src/java/nhannt/roomType/RoomTypeDTO.java</file>
+            <file>file:/E:/CN5/LAB231/HotelBooking/src/java/nhannt/util/LoadFile.java</file>
+            <file>file:/E:/CN5/LAB231/HotelBooking/src/java/nhannt/servlet/SearchServlet.java</file>
+            <file>file:/E:/CN5/LAB231/HotelBooking/web/login.jsp</file>
+            <file>file:/E:/CN5/LAB231/HotelBooking/src/java/nhannt/servlet/LoginServlet.java</file>
+            <file>file:/E:/CN5/LAB231/HotelBooking/src/java/nhannt/util/DateCaculator.java</file>
+            <file>file:/E:/CN5/LAB231/HotelBooking/src/java/nhannt/areas/AreasDAO.java</file>
+            <file>file:/E:/CN5/LAB231/HotelBooking/src/java/nhannt/cart/Items.java</file>
+            <file>file:/E:/CN5/LAB231/HotelBooking/src/java/nhannt/servlet/LogoutServlet.java</file>
+            <file>file:/E:/CN5/LAB231/HotelBooking/src/java/nhannt/userInforDAO/UserInforDTO.java</file>
+            <file>file:/E:/CN5/LAB231/HotelBooking/src/java/nhannt/servlet/ConfirmResetPasswordServlet.java</file>
+            <file>file:/E:/CN5/LAB231/HotelBooking/src/java/nhannt/rooms/OutOffStockErrors.java</file>
+            <file>file:/E:/CN5/LAB231/HotelBooking/src/java/nhannt/hotels/HotelsDAO.java</file>
+            <file>file:/E:/CN5/LAB231/HotelBooking/src/java/nhannt/servlet/BookingServlet.java</file>
+            <file>file:/E:/CN5/LAB231/HotelBooking/src/java/nhannt/bookingDetails/BookingDetailsDAO.java</file>
+            <file>file:/E:/CN5/LAB231/HotelBooking/web/create.jsp</file>
+            <file>file:/E:/CN5/LAB231/HotelBooking/src/java/nhannt/servlet/ResetPasswordServlet.java</file>
+            <file>file:/E:/CN5/LAB231/HotelBooking/web/viewCart.jsp</file>
+            <file>file:/E:/CN5/LAB231/HotelBooking/src/java/nhannt/userInforDAO/UserInforDAO.java</file>
+            <file>file:/E:/CN5/LAB231/HotelBooking/src/java/nhannt/discounts/CreateDiscountErrors.java</file>
+            <file>file:/E:/CN5/LAB231/HotelBooking/src/java/nhannt/filter/FilterDispatcher.java</file>
+            <file>file:/E:/CN5/LAB231/HotelBooking/src/java/nhannt/servlet/ConfirmBookingServlet.java</file>
+            <file>file:/E:/CN5/LAB231/HotelBooking/src/java/nhannt/userInforDAO/CreateAccountError.java</file>
+            <file>file:/E:/CN5/LAB231/HotelBooking/web/siteMap.txt</file>
+            <file>file:/E:/CN5/LAB231/HotelBooking/src/java/nhannt/util/VerifyRecaptcha.java</file>
+            <file>file:/E:/CN5/LAB231/HotelBooking/src/java/nhannt/rooms/RoomsDAO.java</file>
+            <file>file:/E:/CN5/LAB231/HotelBooking/src/java/nhannt/servlet/AddHotelToCartServlet.java</file>
+            <file>file:/E:/CN5/LAB231/HotelBooking/src/java/nhannt/servlet/UpdateCartServlet.java</file>
+            <file>file:/E:/CN5/LAB231/HotelBooking/src/java/nhannt/rooms/RoomsDTO.java</file>
+            <file>file:/E:/CN5/LAB231/HotelBooking/web/reset.jsp</file>
+            <file>file:/E:/CN5/LAB231/HotelBooking/src/java/nhannt/booking/BookingDAO.java</file>
+            <file>file:/E:/CN5/LAB231/HotelBooking/src/java/nhannt/util/Random.java</file>
+            <file>file:/E:/CN5/LAB231/HotelBooking/src/java/nhannt/servlet/CreateDiscountCodeServlet.java</file>
+            <file>file:/E:/CN5/LAB231/HotelBooking/src/java/nhannt/servlet/CreateAccountServlet.java</file>
+            <file>file:/E:/CN5/LAB231/HotelBooking/src/java/nhannt/util/Encryption.java</file>
+            <file>file:/E:/CN5/LAB231/HotelBooking/src/java/nhannt/cart/CartObject.java</file>
+            <file>file:/E:/CN5/LAB231/HotelBooking/src/java/nhannt/servlet/DiscountServlet.java</file>
+            <file>file:/E:/CN5/LAB231/HotelBooking/web/booking.jsp</file>
+            <file>file:/E:/CN5/LAB231/HotelBooking/src/java/nhannt/discounts/DiscountsDAO.java</file>
+            <file>file:/E:/CN5/LAB231/HotelBooking/src/java/nhannt/listener/ServletContextListener.java</file>
+            <file>file:/E:/CN5/LAB231/HotelBooking/src/java/nhannt/servlet/RemoveHotelFromCartServlet.java</file>
+            <file>file:/E:/CN5/LAB231/HotelBooking/src/java/nhannt/roomType/RoomTypeDAO.java</file>
+            <file>file:/E:/CN5/LAB231/HotelBooking/src/java/nhannt/hotels/HotelsDTO.java</file>
+        </group>
+    </open-files>
+</project-private>

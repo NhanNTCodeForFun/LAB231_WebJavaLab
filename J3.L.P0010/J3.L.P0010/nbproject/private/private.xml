@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/E:/CN5/LAB231/J3.L.P0010/src/java/nhannt/servlet/DeletePostServlet.java</file>
+            <file>file:/E:/CN5/LAB231/J3.L.P0010/src/java/nhannt/notification/NotificationDTO.java</file>
+            <file>file:/E:/CN5/LAB231/J3.L.P0010/src/java/nhannt/notification/NotificationDAO.java</file>
+            <file>file:/E:/CN5/LAB231/J3.L.P0010/src/java/nhannt/servlet/DispatchController.java</file>
+            <file>file:/E:/CN5/LAB231/J3.L.P0010/src/java/nhannt/util/DBHelper.java</file>
+            <file>file:/E:/CN5/LAB231/J3.L.P0010/web/post.jsp</file>
+            <file>file:/E:/CN5/LAB231/J3.L.P0010/src/java/nhannt/servlet/PostCommentServlet.java</file>
+            <file>file:/E:/CN5/LAB231/J3.L.P0010/src/java/nhannt/servlet/ViewPostDetailServlet.java</file>
+            <file>file:/E:/CN5/LAB231/J3.L.P0010/web/notification.jsp</file>
+            <file>file:/E:/CN5/LAB231/J3.L.P0010/web/error.html</file>
+            <file>file:/E:/CN5/LAB231/J3.L.P0010/src/java/nhannt/servlet/LoadSearchPostServlet.java</file>
+            <file>file:/E:/CN5/LAB231/J3.L.P0010/src/java/nhannt/verify/SendingEmail.java</file>
+            <file>file:/E:/CN5/LAB231/J3.L.P0010/src/java/nhannt/userInfor/UserInforDAO.java</file>
+            <file>file:/E:/CN5/LAB231/J3.L.P0010/src/java/nhannt/util/Encryption.java</file>
+            <file>file:/E:/CN5/LAB231/J3.L.P0010/web/META-INF/context.xml</file>
+            <file>file:/E:/CN5/LAB231/J3.L.P0010/src/java/nhannt/post/PostArticleError.java</file>
+            <file>file:/E:/CN5/LAB231/J3.L.P0010/src/java/nhannt/servlet/MakeEmotionServlet.java</file>
+            <file>file:/E:/CN5/LAB231/J3.L.P0010/src/java/nhannt/servlet/LoadAllPostServlet.java</file>
+            <file>file:/E:/CN5/LAB231/J3.L.P0010/src/java/nhannt/servlet/RegisterServlet.java</file>
+            <file>file:/E:/CN5/LAB231/J3.L.P0010/web/WEB-INF/web.xml</file>
+            <file>file:/E:/CN5/LAB231/J3.L.P0010/src/java/nhannt/listener/ServletContextListener.java</file>
+            <file>file:/E:/CN5/LAB231/J3.L.P0010/src/java/nhannt/servlet/ActiveAccountServlet.java</file>
+            <file>file:/E:/CN5/LAB231/J3.L.P0010/web/register.jsp</file>
+            <file>file:/E:/CN5/LAB231/J3.L.P0010/web/registerSuccess.jsp</file>
+            <file>file:/E:/CN5/LAB231/J3.L.P0010/src/java/nhannt/post/Post.java</file>
+            <file>file:/E:/CN5/LAB231/J3.L.P0010/src/java/nhannt/post/PostDAO.java</file>
+            <file>file:/E:/CN5/LAB231/J3.L.P0010/src/java/nhannt/emotion/EmotionDTO.java</file>
+            <file>file:/E:/CN5/LAB231/J3.L.P0010/src/java/nhannt/comment/CommentDAO.java</file>
+            <file>file:/E:/CN5/LAB231/J3.L.P0010/src/java/nhannt/post/PostDTO.java</file>
+            <file>file:/E:/CN5/LAB231/J3.L.P0010/src/java/nhannt/servlet/LogoutServlet.java</file>
+            <file>file:/E:/CN5/LAB231/J3.L.P0010/web/login.jsp</file>
+            <file>file:/E:/CN5/LAB231/J3.L.P0010/src/java/nhannt/servlet/PostArticleServlet.java</file>
+            <file>file:/E:/CN5/LAB231/J3.L.P0010/src/java/nhannt/servlet/LoginServlet.java</file>
+            <file>file:/E:/CN5/LAB231/J3.L.P0010/src/java/nhannt/userInfor/CreateNewAccountError.java</file>
+            <file>file:/E:/CN5/LAB231/J3.L.P0010/web/viewPostDetail.jsp</file>
+            <file>file:/E:/CN5/LAB231/J3.L.P0010/src/java/nhannt/comment/Comment.java</file>
+            <file>file:/E:/CN5/LAB231/J3.L.P0010/web/search.jsp</file>
+            <file>file:/E:/CN5/LAB231/J3.L.P0010/src/java/nhannt/servlet/ShowPostServlet.java</file>
+            <file>file:/E:/CN5/LAB231/J3.L.P0010/src/java/nhannt/emotion/EmotionDAO.java</file>
+            <file>file:/E:/CN5/LAB231/J3.L.P0010/src/java/nhannt/notification/Notification.java</file>
+            <file>file:/E:/CN5/LAB231/J3.L.P0010/src/java/nhannt/userInfor/UserInforDTO.java</file>
+            <file>file:/E:/CN5/LAB231/J3.L.P0010/src/java/nhannt/servlet/DeleteCommentServlet.java</file>
+            <file>file:/E:/CN5/LAB231/J3.L.P0010/src/java/nhannt/servlet/ViewNotificationDetailServlet.java</file>
+            <file>file:/E:/CN5/LAB231/J3.L.P0010/web/WEB-INF/log4j.properties</file>
+            <file>file:/E:/CN5/LAB231/J3.L.P0010/src/java/nhannt/comment/CommentDTO.java</file>
+        </group>
+    </open-files>
+</project-private>
