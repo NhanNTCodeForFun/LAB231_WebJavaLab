@@ -31,7 +31,7 @@ import org.apache.log4j.Logger;
 
 /**
  *
- * @author Admin
+ * @author NhanNT
  */
 @WebServlet(name = "CheckOutServlet", urlPatterns = {"/CheckOutServlet"})
 public class CheckOutServlet extends HttpServlet {

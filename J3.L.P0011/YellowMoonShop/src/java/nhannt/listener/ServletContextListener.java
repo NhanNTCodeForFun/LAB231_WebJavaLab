@@ -20,7 +20,7 @@ import org.apache.log4j.PropertyConfigurator;
  *
  * Web application lifecycle listener.
  *
- * @author Admin
+ * @author NhanNT
  */
 @WebListener()
 public class ServletContextListener implements javax.servlet.ServletContextListener {

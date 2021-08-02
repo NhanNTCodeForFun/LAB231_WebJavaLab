@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author Admin
+ * @author NhanNT
  */
 @WebServlet(name = "DispatchController", urlPatterns = {"/DispatchController"})
 public class DispatchController extends HttpServlet {

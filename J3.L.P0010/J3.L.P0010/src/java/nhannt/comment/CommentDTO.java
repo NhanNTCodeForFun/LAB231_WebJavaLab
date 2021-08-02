@@ -10,9 +10,10 @@ import java.sql.Timestamp;
 
 /**
  *
- * @author Admin
+ * @author NhanNT
  */
-public class CommentDTO implements Serializable{
+public class CommentDTO implements Serializable {
+
     private int commentId;
     private String email;
     private int postId;
@@ -66,6 +67,5 @@ public class CommentDTO implements Serializable{
     public void setDateCreated(Timestamp dateCreated) {
         this.dateCreated = dateCreated;
     }
-    
-    
+
 }

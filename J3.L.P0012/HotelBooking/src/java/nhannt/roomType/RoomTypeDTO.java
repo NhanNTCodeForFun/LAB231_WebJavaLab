@@ -9,9 +9,10 @@ import java.io.Serializable;
 
 /**
  *
- * @author Admin
+ * @author NhanNT
  */
-public class RoomTypeDTO implements Serializable{
+public class RoomTypeDTO implements Serializable {
+
     private String typeID;
     private String typeName;
     private String description;
@@ -65,5 +66,5 @@ public class RoomTypeDTO implements Serializable{
     public void setHotelID(String hotelID) {
         this.hotelID = hotelID;
     }
-    
+
 }

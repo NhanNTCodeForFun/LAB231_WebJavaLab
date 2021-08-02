@@ -24,11 +24,12 @@ import org.apache.log4j.Logger;
 
 /**
  *
- * @author Admin
+ * @author NhanNT
  */
 @WebServlet(name = "AddHotelToCartServlet", urlPatterns = {"/AddHotelToCartServlet"})
 public class AddHotelToCartServlet extends HttpServlet {
-    private final String SEARCH_CONTROLLER= "search";
+
+    private final String SEARCH_CONTROLLER = "search";
     static final Logger LOGGER = Logger.getLogger(AddHotelToCartServlet.class);
 
     /**
@@ -56,29 +57,25 @@ public class AddHotelToCartServlet extends HttpServlet {
         ServletContext context = request.getServletContext();
         Map<String, String> siteMap = (Map<String, String>) context.getAttribute("SITE_MAP");
         String url = siteMap.get(SEARCH_CONTROLLER);
-        try  {
-            DateCaculator dateCaculator = new  DateCaculator();
+        try {
+            DateCaculator dateCaculator = new DateCaculator();
             long totalDay = dateCaculator.diffDate(checkInDate, checkOutDate);
-            Items item = new Items(hotelID, hotelName,typeID ,typeName, Integer.parseInt(amount), Float.parseFloat(price), totalDay, checkInDate, checkOutDate);
+            Items item = new Items(hotelID, hotelName, typeID, typeName, Integer.parseInt(amount), Float.parseFloat(price), totalDay, checkInDate, checkOutDate);
             CartObject cartObject = (CartObject) session.getAttribute("cartObject");
             if (cartObject == null) {
                 cartObject = new CartObject();
             }
             boolean rs = cartObject.addHotelToCart(item);
-            if(rs)
-            {
+            if (rs) {
                 session.setAttribute("cartObject", cartObject);
                 request.setAttribute("success", true);
-            } else
-            {
+            } else {
                 request.setAttribute("success", false);
             }
-            
-                    
+
         } catch (ParseException ex) {
-            LOGGER.error("AddHotelToCartServlet - Parse "+ ex.getMessage());
-        } finally
-        {
+            LOGGER.error("AddHotelToCartServlet - Parse " + ex.getMessage());
+        } finally {
             RequestDispatcher rd = request.getRequestDispatcher(url);
             rd.forward(request, response);
         }

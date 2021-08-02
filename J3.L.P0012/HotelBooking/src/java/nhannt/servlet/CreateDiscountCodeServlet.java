@@ -24,7 +24,7 @@ import org.apache.log4j.Logger;
 
 /**
  *
- * @author Admin
+ * @author NhanNT
  */
 @WebServlet(name = "CreateDiscountCodeServlet", urlPatterns = {"/CreateDiscountCodeServlet"})
 public class CreateDiscountCodeServlet extends HttpServlet {

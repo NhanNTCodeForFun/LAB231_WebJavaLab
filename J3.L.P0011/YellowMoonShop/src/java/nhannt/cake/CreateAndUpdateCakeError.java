@@ -9,16 +9,17 @@ import java.io.Serializable;
 
 /**
  *
- * @author Admin
+ * @author NhanNT
  */
-public class CreateAndUpdateCakeError implements Serializable{
+public class CreateAndUpdateCakeError implements Serializable {
+
     private String emptyName;
     private String emptyDescription;
     private String emptyPrice;
     private String emptyQuantity;
     private String emptyExpirationDate;
     private String invalidExpirationDate;
-    
+
     private String emptyImage;
     private String invalidImage;
 
@@ -88,6 +89,5 @@ public class CreateAndUpdateCakeError implements Serializable{
     public void setInvalidImage(String invalidImage) {
         this.invalidImage = invalidImage;
     }
-    
-    
+
 }

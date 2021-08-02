@@ -18,10 +18,24 @@ import nhannt.util.DBHelper;
 
 /**
  *
- * @author Admin
+ * @author NhanNT
  */
 public class CakeDAO implements Serializable {
 
+    /**
+     * Create new cake
+     *
+     * @param name
+     * @param description
+     * @param price
+     * @param quantity
+     * @param expirationDate
+     * @param categoryId
+     * @param image
+     * @return
+     * @throws SQLException
+     * @throws NamingException
+     */
     public boolean createCake(String name, String description, int price, int quantity, Timestamp expirationDate, int categoryId, String image) throws SQLException, NamingException {
         boolean result = false;
         Connection con = null;
@@ -54,6 +68,14 @@ public class CakeDAO implements Serializable {
         return result;
     }
 
+    /**
+     * Get a cake
+     *
+     * @param cakeId
+     * @return
+     * @throws SQLException
+     * @throws NamingException
+     */
     public CakeDTO getCake(String cakeId) throws SQLException, NamingException {
         Connection con = null;
         PreparedStatement stm = null;
@@ -84,14 +106,30 @@ public class CakeDAO implements Serializable {
         return cakeDTO;
     }
 
-    public boolean updateCake(int cakeId, String name, String description, String image, int price, int quantity, Timestamp expirationDate, int categoryId, String status) throws SQLException, NamingException {
+    /**
+     * Update cake
+     *
+     * @param cakeId
+     * @param cakeName
+     * @param description
+     * @param image
+     * @param price
+     * @param quantity
+     * @param expirationDate
+     * @param categoryId
+     * @param status
+     * @return
+     * @throws SQLException
+     * @throws NamingException
+     */
+    public boolean updateCake(int cakeId, String cakeName, String description, String image, int price, int quantity, Timestamp expirationDate, int categoryId, String status) throws SQLException, NamingException {
         Connection con = null;
         PreparedStatement stm = null;
         try {
             con = DBHelper.makeConnection();
             String sql = "UPDATE Cake SET name = ? , description = ? , image = ?, price = ?, quantity = ? , expiration_date = ?, category_id = ?, cake_status = ? WHERE cake_id = ?";
             stm = con.prepareStatement(sql);
-            stm.setString(1, name);
+            stm.setString(1, cakeName);
             stm.setString(2, description);
             stm.setString(3, image);
             stm.setInt(4, price);
@@ -116,6 +154,13 @@ public class CakeDAO implements Serializable {
         return false;
     }
 
+    /**
+     * Count all cake will display for Customer
+     *
+     * @return
+     * @throws SQLException
+     * @throws NamingException
+     */
     public int countAllCakeForCus() throws SQLException, NamingException {
         Connection con = null;
         PreparedStatement stm = null;
@@ -146,7 +191,15 @@ public class CakeDAO implements Serializable {
         return count;
     }
 
-    public ArrayList<CakeDTO> loadAllCakePageForCus(String page) throws SQLException, NamingException {
+    /**
+     * Load all cake of a page for Customer
+     *
+     * @param pageNumber
+     * @return
+     * @throws SQLException
+     * @throws NamingException
+     */
+    public ArrayList<CakeDTO> loadAllCakePageForCus(String pageNumber) throws SQLException, NamingException {
         ArrayList<CakeDTO> listCake = new ArrayList<>();
         Connection con = null;
         PreparedStatement stm = null;
@@ -159,8 +212,8 @@ public class CakeDAO implements Serializable {
                     + "WHERE cake_status = 'Active' and quantity > 0 AND expiration_date > ?) as Result WHERE rowNum > ? AND rowNum <= ?";
             stm = con.prepareStatement(sql);
             stm.setTimestamp(1, currentTime);
-            stm.setInt(2, 20 * ((Integer.parseInt(page)) - 1));
-            stm.setInt(3, 20 * (Integer.parseInt(page)));
+            stm.setInt(2, 20 * ((Integer.parseInt(pageNumber)) - 1));
+            stm.setInt(3, 20 * (Integer.parseInt(pageNumber)));
             rs = stm.executeQuery();
             while (rs.next()) {
                 listCake.add(new CakeDTO(rs.getInt("cake_id"), rs.getString("name"),
@@ -181,6 +234,16 @@ public class CakeDAO implements Serializable {
         return listCake;
     }
 
+    /**
+     * Count cake after search will display for Customer
+     *
+     * @param searchValue
+     * @param min
+     * @param max
+     * @return
+     * @throws SQLException
+     * @throws NamingException
+     */
     public int countCakeSearchByNameForCus(String searchValue, int min, int max) throws SQLException, NamingException {
         Connection con = null;
         PreparedStatement stm = null;
@@ -214,7 +277,18 @@ public class CakeDAO implements Serializable {
         return count;
     }
 
-    public ArrayList<CakeDTO> searchCakeByNamePageForCus(String page, String seachValue, int min, int max) throws SQLException, NamingException {
+    /**
+     * Search Cake by Name for Customer
+     *
+     * @param pageNumber
+     * @param seachValue
+     * @param min
+     * @param max
+     * @return
+     * @throws SQLException
+     * @throws NamingException
+     */
+    public ArrayList<CakeDTO> searchCakeByNamePageForCus(String pageNumber, String seachValue, int min, int max) throws SQLException, NamingException {
         ArrayList<CakeDTO> listCake = new ArrayList<>();
         Connection con = null;
         PreparedStatement stm = null;
@@ -230,8 +304,8 @@ public class CakeDAO implements Serializable {
             stm.setInt(2, min);
             stm.setInt(3, max);
             stm.setTimestamp(4, currentTime);
-            stm.setInt(5, 20 * ((Integer.parseInt(page)) - 1));
-            stm.setInt(6, 20 * (Integer.parseInt(page)));
+            stm.setInt(5, 20 * ((Integer.parseInt(pageNumber)) - 1));
+            stm.setInt(6, 20 * (Integer.parseInt(pageNumber)));
             rs = stm.executeQuery();
             while (rs.next()) {
                 listCake.add(new CakeDTO(rs.getInt("cake_id"), rs.getString("name"),
@@ -252,6 +326,16 @@ public class CakeDAO implements Serializable {
         return listCake;
     }
 
+    /**
+     * Count Cake after search by category for Customer
+     *
+     * @param categoryId
+     * @param min
+     * @param max
+     * @return
+     * @throws SQLException
+     * @throws NamingException
+     */
     public int countCakeSearchByCategoryForCus(String categoryId, int min, int max) throws SQLException, NamingException {
         Connection con = null;
         PreparedStatement stm = null;
@@ -285,7 +369,18 @@ public class CakeDAO implements Serializable {
         return count;
     }
 
-    public ArrayList<CakeDTO> searchCakeByCategoryPageForCus(String page, String categoryId, int min, int max) throws SQLException, NamingException {
+    /**
+     * Search Cake by category for Customer
+     *
+     * @param pageNumber
+     * @param categoryId
+     * @param min
+     * @param max
+     * @return
+     * @throws SQLException
+     * @throws NamingException
+     */
+    public ArrayList<CakeDTO> searchCakeByCategoryPageForCus(String pageNumber, String categoryId, int min, int max) throws SQLException, NamingException {
         ArrayList<CakeDTO> listCake = new ArrayList<>();
         Connection con = null;
         PreparedStatement stm = null;
@@ -301,8 +396,8 @@ public class CakeDAO implements Serializable {
             stm.setInt(2, min);
             stm.setInt(3, max);
             stm.setTimestamp(4, currentTime);
-            stm.setInt(5, 20 * ((Integer.parseInt(page)) - 1));
-            stm.setInt(6, 20 * (Integer.parseInt(page)));
+            stm.setInt(5, 20 * ((Integer.parseInt(pageNumber)) - 1));
+            stm.setInt(6, 20 * (Integer.parseInt(pageNumber)));
             rs = stm.executeQuery();
             while (rs.next()) {
                 listCake.add(new CakeDTO(rs.getInt("cake_id"), rs.getString("name"),
@@ -323,6 +418,17 @@ public class CakeDAO implements Serializable {
         return listCake;
     }
 
+    /**
+     * Count cake after search by name and category will display for Customer
+     *
+     * @param searchValue
+     * @param categoryId
+     * @param min
+     * @param max
+     * @return
+     * @throws SQLException
+     * @throws NamingException
+     */
     public int countCakeSearchByNameAndCategoryForCus(String searchValue, String categoryId, int min, int max) throws SQLException, NamingException {
         Connection con = null;
         PreparedStatement stm = null;
@@ -357,7 +463,19 @@ public class CakeDAO implements Serializable {
         return count;
     }
 
-    public ArrayList<CakeDTO> searchCakeByNameAndCategoryPageForCus(String page, String seachValue, String categoryId, int min, int max) throws SQLException, NamingException {
+    /**
+     * Search cake by name and category for Customer
+     *
+     * @param pageNumber
+     * @param seachValue
+     * @param categoryId
+     * @param min
+     * @param max
+     * @return
+     * @throws SQLException
+     * @throws NamingException
+     */
+    public ArrayList<CakeDTO> searchCakeByNameAndCategoryPageForCus(String pageNumber, String seachValue, String categoryId, int min, int max) throws SQLException, NamingException {
         ArrayList<CakeDTO> listCake = new ArrayList<>();
         Connection con = null;
         PreparedStatement stm = null;
@@ -374,8 +492,8 @@ public class CakeDAO implements Serializable {
             stm.setInt(3, min);
             stm.setInt(4, max);
             stm.setTimestamp(5, currentTime);
-            stm.setInt(6, 20 * ((Integer.parseInt(page)) - 1));
-            stm.setInt(7, 20 * (Integer.parseInt(page)));
+            stm.setInt(6, 20 * ((Integer.parseInt(pageNumber)) - 1));
+            stm.setInt(7, 20 * (Integer.parseInt(pageNumber)));
             rs = stm.executeQuery();
             while (rs.next()) {
                 listCake.add(new CakeDTO(rs.getInt("cake_id"), rs.getString("name"),
@@ -396,6 +514,15 @@ public class CakeDAO implements Serializable {
         return listCake;
     }
 
+    /**
+     * Count Cake after search by Price for Customer
+     *
+     * @param min
+     * @param max
+     * @return
+     * @throws SQLException
+     * @throws NamingException
+     */
     public int countCakeSearchByPriceForCus(int min, int max) throws SQLException, NamingException {
         Connection con = null;
         PreparedStatement stm = null;
@@ -428,7 +555,17 @@ public class CakeDAO implements Serializable {
         return count;
     }
 
-    public ArrayList<CakeDTO> searchCakeByPricePageForCus(String page, int min, int max) throws SQLException, NamingException {
+    /**
+     * Search cake by Proce for customer
+     *
+     * @param pageNumber
+     * @param min
+     * @param max
+     * @return
+     * @throws SQLException
+     * @throws NamingException
+     */
+    public ArrayList<CakeDTO> searchCakeByPricePageForCus(String pageNumber, int min, int max) throws SQLException, NamingException {
         ArrayList<CakeDTO> listCake = new ArrayList<>();
         Connection con = null;
         PreparedStatement stm = null;
@@ -443,8 +580,8 @@ public class CakeDAO implements Serializable {
             stm.setInt(1, min);
             stm.setInt(2, max);
             stm.setTimestamp(3, currentTime);
-            stm.setInt(4, 20 * ((Integer.parseInt(page)) - 1));
-            stm.setInt(5, 20 * (Integer.parseInt(page)));
+            stm.setInt(4, 20 * ((Integer.parseInt(pageNumber)) - 1));
+            stm.setInt(5, 20 * (Integer.parseInt(pageNumber)));
             rs = stm.executeQuery();
             while (rs.next()) {
                 listCake.add(new CakeDTO(rs.getInt("cake_id"), rs.getString("name"),
@@ -464,6 +601,14 @@ public class CakeDAO implements Serializable {
         }
         return listCake;
     }
+
+    /**
+     * Count all cake for Ad
+     *
+     * @return
+     * @throws SQLException
+     * @throws NamingException
+     */
 
     public int countAllCakeForAd() throws SQLException, NamingException {
         Connection con = null;
@@ -493,7 +638,15 @@ public class CakeDAO implements Serializable {
         return count;
     }
 
-    public ArrayList<CakeDTO> loadAllCakePageForAd(String page) throws SQLException, NamingException {
+    /**
+     * Load all cake for Ad
+     *
+     * @param pageNumber
+     * @return
+     * @throws SQLException
+     * @throws NamingException
+     */
+    public ArrayList<CakeDTO> loadAllCakePageForAd(String pageNumber) throws SQLException, NamingException {
         ArrayList<CakeDTO> listCake = new ArrayList<>();
         Connection con = null;
         PreparedStatement stm = null;
@@ -504,8 +657,8 @@ public class CakeDAO implements Serializable {
                     + "(SELECT ROW_NUMBER() OVER (ORDER BY create_date) as rowNum , cake_id, name, image, description, price, quantity, create_date, expiration_date, category_id, cake_status FROM Cake) "
                     + " as Result WHERE rowNum > ? AND rowNum <= ?";
             stm = con.prepareStatement(sql);
-            stm.setInt(1, 20 * ((Integer.parseInt(page)) - 1));
-            stm.setInt(2, 20 * (Integer.parseInt(page)));
+            stm.setInt(1, 20 * ((Integer.parseInt(pageNumber)) - 1));
+            stm.setInt(2, 20 * (Integer.parseInt(pageNumber)));
             rs = stm.executeQuery();
             while (rs.next()) {
                 listCake.add(new CakeDTO(rs.getInt("cake_id"), rs.getString("name"),
@@ -526,6 +679,16 @@ public class CakeDAO implements Serializable {
         return listCake;
     }
 
+    /**
+     * Count Cake after search for Ad
+     *
+     * @param searchValue
+     * @param min
+     * @param max
+     * @return
+     * @throws SQLException
+     * @throws NamingException
+     */
     public int countCakeSearchByNameForAd(String searchValue, int min, int max) throws SQLException, NamingException {
         Connection con = null;
         PreparedStatement stm = null;
@@ -557,7 +720,18 @@ public class CakeDAO implements Serializable {
         return count;
     }
 
-    public ArrayList<CakeDTO> searchCakeByNamePageForAd(String page, String seachValue, int min, int max) throws SQLException, NamingException {
+    /**
+     * Search Cake by name for Ad
+     *
+     * @param pageNumber
+     * @param seachValue
+     * @param min
+     * @param max
+     * @return
+     * @throws SQLException
+     * @throws NamingException
+     */
+    public ArrayList<CakeDTO> searchCakeByNamePageForAd(String pageNumber, String seachValue, int min, int max) throws SQLException, NamingException {
         ArrayList<CakeDTO> listCake = new ArrayList<>();
         Connection con = null;
         PreparedStatement stm = null;
@@ -571,8 +745,8 @@ public class CakeDAO implements Serializable {
             stm.setString(1, "%" + seachValue + "%");
             stm.setInt(2, min);
             stm.setInt(3, max);
-            stm.setInt(4, 20 * ((Integer.parseInt(page)) - 1));
-            stm.setInt(5, 20 * (Integer.parseInt(page)));
+            stm.setInt(4, 20 * ((Integer.parseInt(pageNumber)) - 1));
+            stm.setInt(5, 20 * (Integer.parseInt(pageNumber)));
             rs = stm.executeQuery();
             while (rs.next()) {
                 listCake.add(new CakeDTO(rs.getInt("cake_id"), rs.getString("name"),
@@ -593,6 +767,16 @@ public class CakeDAO implements Serializable {
         return listCake;
     }
 
+    /**
+     * Count Cake after search by category for Ad
+     *
+     * @param categoryId
+     * @param min
+     * @param max
+     * @return
+     * @throws SQLException
+     * @throws NamingException
+     */
     public int countCakeSearchByCategoryForAd(String categoryId, int min, int max) throws SQLException, NamingException {
         Connection con = null;
         PreparedStatement stm = null;
@@ -624,7 +808,18 @@ public class CakeDAO implements Serializable {
         return count;
     }
 
-    public ArrayList<CakeDTO> searchCakeByCategoryPageForAd(String page, String categoryId, int min, int max) throws SQLException, NamingException {
+    /**
+     * Search cake by category for Ad
+     *
+     * @param pageNumber
+     * @param categoryId
+     * @param min
+     * @param max
+     * @return
+     * @throws SQLException
+     * @throws NamingException
+     */
+    public ArrayList<CakeDTO> searchCakeByCategoryPageForAd(String pageNumber, String categoryId, int min, int max) throws SQLException, NamingException {
         ArrayList<CakeDTO> listCake = new ArrayList<>();
         Connection con = null;
         PreparedStatement stm = null;
@@ -638,8 +833,8 @@ public class CakeDAO implements Serializable {
             stm.setInt(1, Integer.parseInt(categoryId));
             stm.setInt(2, min);
             stm.setInt(3, max);
-            stm.setInt(4, 20 * ((Integer.parseInt(page)) - 1));
-            stm.setInt(5, 20 * (Integer.parseInt(page)));
+            stm.setInt(4, 20 * ((Integer.parseInt(pageNumber)) - 1));
+            stm.setInt(5, 20 * (Integer.parseInt(pageNumber)));
             rs = stm.executeQuery();
             while (rs.next()) {
                 listCake.add(new CakeDTO(rs.getInt("cake_id"), rs.getString("name"),
@@ -660,6 +855,17 @@ public class CakeDAO implements Serializable {
         return listCake;
     }
 
+    /**
+     * Count cake after search by name and category for Ad
+     *
+     * @param searchValue
+     * @param categoryId
+     * @param min
+     * @param max
+     * @return
+     * @throws SQLException
+     * @throws NamingException
+     */
     public int countCakeSearchByNameAndCategoryForAd(String searchValue, String categoryId, int min, int max) throws SQLException, NamingException {
         Connection con = null;
         PreparedStatement stm = null;
@@ -692,7 +898,19 @@ public class CakeDAO implements Serializable {
         return count;
     }
 
-    public ArrayList<CakeDTO> searchCakeByNameAndCategoryPageForAd(String page, String seachValue, String categoryId, int min, int max) throws SQLException, NamingException {
+    /**
+     * Search cake by name and category for Ad
+     *
+     * @param pageNumber
+     * @param seachValue
+     * @param categoryId
+     * @param min
+     * @param max
+     * @return
+     * @throws SQLException
+     * @throws NamingException
+     */
+    public ArrayList<CakeDTO> searchCakeByNameAndCategoryPageForAd(String pageNumber, String seachValue, String categoryId, int min, int max) throws SQLException, NamingException {
         ArrayList<CakeDTO> listCake = new ArrayList<>();
         Connection con = null;
         PreparedStatement stm = null;
@@ -707,8 +925,8 @@ public class CakeDAO implements Serializable {
             stm.setInt(2, Integer.parseInt(categoryId));
             stm.setInt(3, min);
             stm.setInt(4, max);
-            stm.setInt(5, 20 * ((Integer.parseInt(page)) - 1));
-            stm.setInt(6, 20 * (Integer.parseInt(page)));
+            stm.setInt(5, 20 * ((Integer.parseInt(pageNumber)) - 1));
+            stm.setInt(6, 20 * (Integer.parseInt(pageNumber)));
             rs = stm.executeQuery();
             while (rs.next()) {
                 listCake.add(new CakeDTO(rs.getInt("cake_id"), rs.getString("name"),
@@ -729,6 +947,15 @@ public class CakeDAO implements Serializable {
         return listCake;
     }
 
+    /**
+     * Count cake after search by price for Ad
+     *
+     * @param min
+     * @param max
+     * @return
+     * @throws SQLException
+     * @throws NamingException
+     */
     public int countCakeSearchByPriceForAd(int min, int max) throws SQLException, NamingException {
         Connection con = null;
         PreparedStatement stm = null;
@@ -758,6 +985,17 @@ public class CakeDAO implements Serializable {
         }
         return count;
     }
+
+    /**
+     * Search cake by Price for Ad
+     *
+     * @param page
+     * @param min
+     * @param max
+     * @return
+     * @throws SQLException
+     * @throws NamingException
+     */
 
     public ArrayList<CakeDTO> searchCakeByPricePageForAd(String page, int min, int max) throws SQLException, NamingException {
         ArrayList<CakeDTO> listCake = new ArrayList<>();

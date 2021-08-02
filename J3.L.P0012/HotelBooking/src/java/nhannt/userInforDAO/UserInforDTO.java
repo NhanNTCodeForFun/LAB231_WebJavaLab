@@ -9,9 +9,10 @@ import java.io.Serializable;
 
 /**
  *
- * @author Admin
+ * @author NhanNT
  */
-public class UserInforDTO implements Serializable{
+public class UserInforDTO implements Serializable {
+
     private String username;
     private String password;
     private String name;
@@ -75,6 +76,5 @@ public class UserInforDTO implements Serializable{
     public void setRoleID(int roleId) {
         this.roleID = roleId;
     }
-    
-    
+
 }

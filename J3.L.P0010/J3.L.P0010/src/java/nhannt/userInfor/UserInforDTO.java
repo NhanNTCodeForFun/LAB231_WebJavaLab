@@ -9,9 +9,10 @@ import java.io.Serializable;
 
 /**
  *
- * @author Admin
+ * @author NhanNT
  */
-public class UserInforDTO implements Serializable{
+public class UserInforDTO implements Serializable {
+
     private String email;
     private String password;
     private String fullName;
@@ -65,6 +66,5 @@ public class UserInforDTO implements Serializable{
     public void setStatus(String status) {
         this.status = status;
     }
-    
-    
+
 }

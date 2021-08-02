@@ -9,9 +9,10 @@ import java.io.Serializable;
 
 /**
  *
- * @author Admin
+ * @author NhanNT
  */
-public class Items implements Serializable{
+public class Items implements Serializable {
+
     private String hotelId;
     private String hotelName;
     private String typeID;
@@ -33,7 +34,6 @@ public class Items implements Serializable{
         this.checkInDate = checkInDate;
         this.checkOutDate = checkOutDate;
     }
-    
 
     public String getTypeID() {
         return typeID;
@@ -43,9 +43,6 @@ public class Items implements Serializable{
         this.typeID = typeID;
     }
 
-    
-
-    
     public long getTotalDay() {
         return totalDay;
     }
@@ -53,8 +50,6 @@ public class Items implements Serializable{
     public void setTotalDay(long totalDay) {
         this.totalDay = totalDay;
     }
-
-   
 
     public String getHotelId() {
         return hotelId;
@@ -111,6 +106,5 @@ public class Items implements Serializable{
     public void setCheckOutDate(String checkOutDate) {
         this.checkOutDate = checkOutDate;
     }
-    
-    
+
 }

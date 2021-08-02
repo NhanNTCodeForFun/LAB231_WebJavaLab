@@ -6,7 +6,6 @@
 package nhannt.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.naming.NamingException;
@@ -26,7 +25,7 @@ import org.apache.log4j.Logger;
 
 /**
  *
- * @author Admin
+ * @author NhanNT
  */
 @WebServlet(name = "LoadAllPostServlet", urlPatterns = {"/LoadAllPostServlet"})
 public class LoadAllPostServlet extends HttpServlet {

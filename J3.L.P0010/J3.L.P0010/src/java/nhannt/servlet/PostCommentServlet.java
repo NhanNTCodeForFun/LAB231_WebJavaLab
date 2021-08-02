@@ -20,7 +20,7 @@ import org.apache.log4j.Logger;
 
 /**
  *
- * @author Admin
+ * @author NhanNT
  */
 @WebServlet(name = "PostCommentServlet", urlPatterns = {"/PostCommentServlet"})
 public class PostCommentServlet extends HttpServlet {

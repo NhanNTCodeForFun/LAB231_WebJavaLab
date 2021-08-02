@@ -17,7 +17,7 @@ import javax.servlet.ServletContextEvent;
 
 /**
  *
- * @author Admin
+ * @author NhanNT
  */
 public class LoadFile implements Serializable{
     private Map<String, String> siteMap;
@@ -34,7 +34,7 @@ public class LoadFile implements Serializable{
     }
     
     
-
+    
     public void loadFile(String filename, ServletContextEvent sce) throws IOException {
         ServletContext context = sce.getServletContext();
         String realPath = context.getRealPath("/");

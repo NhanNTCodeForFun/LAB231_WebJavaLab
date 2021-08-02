@@ -18,7 +18,7 @@ import javax.swing.JFileChooser;
 
 /**
  *
- * @author Admin
+ * @author NhanNT
  */
 @WebServlet(name = "ChooseImageServlet", urlPatterns = {"/ChooseImageServlet"})
 public class ChooseImageServlet extends HttpServlet {

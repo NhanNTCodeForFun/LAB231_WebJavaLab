@@ -10,7 +10,7 @@ import java.sql.Timestamp;
 
 /**
  *
- * @author Admin
+ * @author NhanNT
  */
 public class CakeDTO implements Serializable{
     private int cakeId;

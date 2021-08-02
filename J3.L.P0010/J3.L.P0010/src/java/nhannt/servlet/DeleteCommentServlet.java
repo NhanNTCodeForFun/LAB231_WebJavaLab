@@ -20,7 +20,7 @@ import org.apache.log4j.Logger;
 
 /**
  *
- * @author Admin
+ * @author NhanNT
  */
 @WebServlet(name = "DeleteCommentServlet", urlPatterns = {"/DeleteCommentServlet"})
 public class DeleteCommentServlet extends HttpServlet {

@@ -9,9 +9,10 @@ import java.io.Serializable;
 
 /**
  *
- * @author Admin
+ * @author NhanNT
  */
-public class EmotionDTO implements Serializable{
+public class EmotionDTO implements Serializable {
+
     private String email;
     private int postId;
     private boolean isLike;
@@ -21,7 +22,6 @@ public class EmotionDTO implements Serializable{
         this.postId = postId;
         this.isLike = isLike;
     }
-    
 
     public String getEmail() {
         return email;
@@ -46,6 +46,5 @@ public class EmotionDTO implements Serializable{
     public void setIsLike(boolean isLike) {
         this.isLike = isLike;
     }
-    
-    
+
 }

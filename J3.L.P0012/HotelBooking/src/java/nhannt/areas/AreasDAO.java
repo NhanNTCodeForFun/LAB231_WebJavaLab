@@ -16,11 +16,18 @@ import nhannt.util.DBHelper;
 
 /**
  *
- * @author Admin
+ * @author NhanNT
  */
-public class AreasDAO implements Serializable{
-    public ArrayList<String> getListAreas() throws SQLException, NamingException
-    {
+public class AreasDAO implements Serializable {
+
+    /**
+     * Get list Areas
+     *
+     * @return listAreas
+     * @throws SQLException
+     * @throws NamingException
+     */
+    public ArrayList<String> getListAreas() throws SQLException, NamingException {
         Connection con = null;
         PreparedStatement stm = null;
         ResultSet rs = null;
@@ -30,21 +37,17 @@ public class AreasDAO implements Serializable{
             String sql = "SELECT DISTINCT areaName FROM Areas";
             stm = con.prepareStatement(sql);
             rs = stm.executeQuery();
-            while(rs.next())
-            {
+            while (rs.next()) {
                 listAreas.add(rs.getString("areaName"));
             }
-        } finally  {
-            if(rs != null)
-            {
+        } finally {
+            if (rs != null) {
                 rs.close();
             }
-            if( stm != null)
-            {
+            if (stm != null) {
                 stm.close();
             }
-            if( con != null)
-            {
+            if (con != null) {
                 con.close();
             }
         }

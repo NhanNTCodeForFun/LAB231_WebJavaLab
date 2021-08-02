@@ -16,7 +16,7 @@ import nhannt.cart.Cart;
 
 /**
  *
- * @author Admin
+ * @author NhanNT
  */
 @WebServlet(name = "UpdateCartServlet", urlPatterns = {"/UpdateCartServlet"})
 public class UpdateCartServlet extends HttpServlet {

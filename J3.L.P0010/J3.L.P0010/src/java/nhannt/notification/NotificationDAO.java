@@ -18,10 +18,18 @@ import nhannt.util.DBHelper;
 
 /**
  *
- * @author Admin
+ * @author NhanNT
  */
 public class NotificationDAO implements Serializable {
-    
+
+    /**
+     * Get list notification of a user
+     *
+     * @param email
+     * @return
+     * @throws SQLException
+     * @throws NamingException
+     */
     public ArrayList<NotificationDTO> getListNotification(String email) throws SQLException, NamingException {
         ArrayList<NotificationDTO> listNotification = new ArrayList<>();
         Connection con = null;
@@ -34,7 +42,7 @@ public class NotificationDAO implements Serializable {
                     + "WHERE Post.email = ? ORDER BY date_created DESC";
             stm = con.prepareStatement(sql);
             stm.setString(1, email);
-            
+
             rs = stm.executeQuery();
             while (rs.next()) {
                 listNotification.add(new NotificationDTO(rs.getInt("notification_id"), rs.getString("email"), rs.getInt("post_id"), rs.getString("type"), rs.getTimestamp("date_created"), rs.getBoolean("isNew"), rs.getInt("comment_id")));
@@ -52,7 +60,17 @@ public class NotificationDAO implements Serializable {
         }
         return listNotification;
     }
-    
+
+    /**
+     * Delete notification
+     *
+     * @param email
+     * @param postId
+     * @param type
+     * @return
+     * @throws SQLException
+     * @throws NamingException
+     */
     public boolean deleteNotification(String email, int postId, String type) throws SQLException, NamingException {
         Connection con = null;
         PreparedStatement stm = null;
@@ -79,6 +97,14 @@ public class NotificationDAO implements Serializable {
         return result;
     }
 
+    /**
+     * Delete notification by postId
+     *
+     * @param postId
+     * @return
+     * @throws SQLException
+     * @throws NamingException
+     */
     public boolean deleteNotificationByPostId(int postId) throws SQLException, NamingException {
         Connection con = null;
         PreparedStatement stm = null;
@@ -87,9 +113,9 @@ public class NotificationDAO implements Serializable {
             con = DBHelper.makeConnection();
             String sql = "DELETE FROM Notification WHERE post_Id = ?";
             stm = con.prepareStatement(sql);
-            
+
             stm.setInt(1, postId);
-            
+
             int row = stm.executeUpdate();
             if (row > 0) {
                 result = true;
@@ -105,6 +131,14 @@ public class NotificationDAO implements Serializable {
         return result;
     }
 
+    /**
+     * Delete notification by CommentId
+     *
+     * @param commentId
+     * @return
+     * @throws SQLException
+     * @throws NamingException
+     */
     public boolean deleteNotificationByCommentId(int commentId) throws SQLException, NamingException {
         Connection con = null;
         PreparedStatement stm = null;
@@ -128,7 +162,18 @@ public class NotificationDAO implements Serializable {
         }
         return result;
     }
-    
+
+    /**
+     * Add notification
+     *
+     * @param email
+     * @param postId
+     * @param type
+     * @param commentId
+     * @return
+     * @throws SQLException
+     * @throws NamingException
+     */
     public boolean addNotification(String email, int postId, String type, int commentId) throws SQLException, NamingException {
         Connection con = null;
         PreparedStatement stm = null;
@@ -158,6 +203,16 @@ public class NotificationDAO implements Serializable {
         return result;
     }
 
+    /**
+     * Add notification
+     *
+     * @param email
+     * @param postId
+     * @param type
+     * @return
+     * @throws SQLException
+     * @throws NamingException
+     */
     public boolean addNotification(String email, int postId, String type) throws SQLException, NamingException {
         Connection con = null;
         PreparedStatement stm = null;
@@ -171,7 +226,7 @@ public class NotificationDAO implements Serializable {
             stm.setInt(2, postId);
             stm.setString(3, type);
             stm.setTimestamp(4, time);
-            
+
             int row = stm.executeUpdate();
             if (row > 0) {
                 result = true;

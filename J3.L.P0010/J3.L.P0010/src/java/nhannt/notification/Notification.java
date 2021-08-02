@@ -9,9 +9,10 @@ import java.io.Serializable;
 
 /**
  *
- * @author Admin
+ * @author NhanNT
  */
-public class Notification implements Serializable{
+public class Notification implements Serializable {
+
     private NotificationDTO notificationDTO;
     private String name;
 
@@ -35,6 +36,5 @@ public class Notification implements Serializable{
     public void setName(String name) {
         this.name = name;
     }
-    
-    
+
 }

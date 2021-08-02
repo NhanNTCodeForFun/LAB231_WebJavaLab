@@ -16,10 +16,23 @@ import nhannt.util.DBHelper;
 
 /**
  *
- * @author Admin
+ * @author NhanNT
  */
 public class HotelsDAO implements Serializable {
 
+    /**
+     * Search hotel
+     *
+     * @param name
+     * @param area
+     * @param roomType
+     * @param checkInDate
+     * @param checkOutDate
+     * @param amount
+     * @return listHotels
+     * @throws SQLException
+     * @throws NamingException
+     */
     public ArrayList<HotelsDTO> searchHotel(String name, String area, String roomType, String checkInDate, String checkOutDate, String amount) throws SQLException, NamingException {
         Connection con = null;
         PreparedStatement stm = null;
@@ -53,16 +66,13 @@ public class HotelsDAO implements Serializable {
 
             }
         } finally {
-            if(rs!= null)
-            {
+            if (rs != null) {
                 rs.close();
             }
-            if(stm != null)
-            {
+            if (stm != null) {
                 stm.close();
             }
-            if(con != null)
-            {
+            if (con != null) {
                 con.close();
             }
         }

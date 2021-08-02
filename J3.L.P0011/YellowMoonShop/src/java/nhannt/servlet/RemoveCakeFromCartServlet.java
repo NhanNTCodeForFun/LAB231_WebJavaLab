@@ -17,7 +17,7 @@ import nhannt.cart.Cart;
 
 /**
  *
- * @author Admin
+ * @author NhanNT
  */
 @WebServlet(name = "RemoveCakeFromCartServlet", urlPatterns = {"/RemoveCakeFromCartServlet"})
 public class RemoveCakeFromCartServlet extends HttpServlet {

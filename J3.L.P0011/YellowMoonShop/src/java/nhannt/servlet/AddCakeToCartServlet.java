@@ -25,7 +25,7 @@ import org.apache.log4j.Logger;
 
 /**
  *
- * @author Admin
+ * @author NhanNT
  */
 @WebServlet(name = "AddCakeToCartServlet", urlPatterns = {"/AddCakeToCartServlet"})
 public class AddCakeToCartServlet extends HttpServlet {

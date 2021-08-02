@@ -15,10 +15,18 @@ import nhannt.util.DBHelper;
 
 /**
  *
- * @author Admin
+ * @author NhanNT
  */
 public class EmotionDAO implements Serializable {
 
+    /**
+     * Count like of a post
+     *
+     * @param postId
+     * @return number of likes
+     * @throws SQLException
+     * @throws NamingException
+     */
     public int countLike(int postId) throws SQLException, NamingException {
         int count = 0;
         boolean isLike = true;
@@ -49,6 +57,14 @@ public class EmotionDAO implements Serializable {
         return count;
     }
 
+    /**
+     * Count dislike of a post
+     *
+     * @param postId
+     * @return number of dislike
+     * @throws SQLException
+     * @throws NamingException
+     */
     public int countDislike(int postId) throws SQLException, NamingException {
         int count = 0;
         boolean isLike = false;
@@ -79,6 +95,15 @@ public class EmotionDAO implements Serializable {
         return count;
     }
 
+    /**
+     * Get emotion of user in a post
+     *
+     * @param email
+     * @param postId
+     * @return
+     * @throws SQLException
+     * @throws NamingException
+     */
     public EmotionDTO getEmotion(String email, String postId) throws SQLException, NamingException {
         EmotionDTO emotionDTO = null;
         Connection con = null;
@@ -109,6 +134,16 @@ public class EmotionDAO implements Serializable {
         return emotionDTO;
     }
 
+    /**
+     * Add emotion for a post
+     *
+     * @param email
+     * @param postId
+     * @param isLike
+     * @return
+     * @throws SQLException
+     * @throws NamingException
+     */
     public boolean addEmotion(String email, String postId, boolean isLike) throws SQLException, NamingException {
         boolean result = false;
         Connection con = null;
@@ -138,6 +173,15 @@ public class EmotionDAO implements Serializable {
         return result;
     }
 
+    /**
+     * Delete emotion for a post
+     *
+     * @param email
+     * @param postId
+     * @return
+     * @throws SQLException
+     * @throws NamingException
+     */
     public boolean deleteEmotion(String email, String postId) throws SQLException, NamingException {
         boolean result = false;
         Connection con = null;
@@ -167,6 +211,16 @@ public class EmotionDAO implements Serializable {
         return result;
     }
 
+    /**
+     * Update emotion on a post
+     *
+     * @param email
+     * @param postId
+     * @param isLike
+     * @return
+     * @throws SQLException
+     * @throws NamingException
+     */
     public boolean updateEmotion(String email, String postId, Boolean isLike) throws SQLException, NamingException {
         boolean result = false;
         Connection con = null;

@@ -18,7 +18,7 @@ import org.apache.log4j.Logger;
 
 /**
  *
- * @author Admin
+ * @author NhanNT
  */
 @WebServlet(name = "ActiveAccountServlet", urlPatterns = {"/ActiveAccountServlet"})
 public class ActiveAccountServlet extends HttpServlet {
@@ -45,7 +45,7 @@ public class ActiveAccountServlet extends HttpServlet {
             boolean result = userInforDAO.checkNewAccount(email);
             if(result)
             {
-                userInforDAO.AcctiveAccount(email);       
+                userInforDAO.ActiveAccount(email);       
             }
             
             

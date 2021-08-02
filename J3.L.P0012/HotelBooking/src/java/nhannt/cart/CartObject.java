@@ -11,7 +11,7 @@ import java.util.Map;
 
 /**
  *
- * @author Admin
+ * @author NhanNT
  */
 public class CartObject implements Serializable {
 
@@ -28,6 +28,12 @@ public class CartObject implements Serializable {
         this.cart = cart;
     }
 
+    /**
+     * Add Hotel to cart
+     *
+     * @param item
+     * @return if success return true, else return false
+     */
     public boolean addHotelToCart(Items item) {
         if (this.cart == null) {
             this.cart = new HashMap<>();
@@ -42,6 +48,11 @@ public class CartObject implements Serializable {
         return true;
     }
 
+    /**
+     * Remove hotel form cart
+     *
+     * @param typeID
+     */
     public void removeHotelFromCart(String typeID) {
         if (this.cart == null) {
             return;
@@ -54,6 +65,13 @@ public class CartObject implements Serializable {
             }
         }
     }
+
+    /**
+     * Update amount in cart
+     *
+     * @param typeID
+     * @param amount
+     */
     public void updateAmount(String typeID, int amount) {
         if (this.cart == null) {
             return;

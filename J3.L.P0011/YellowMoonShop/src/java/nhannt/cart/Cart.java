@@ -12,7 +12,7 @@ import nhannt.cake.CakeDTO;
 
 /**
  *
- * @author Admin
+ * @author NhanNT
  */
 public class Cart implements Serializable {
 

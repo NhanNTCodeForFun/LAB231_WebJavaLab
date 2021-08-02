@@ -15,9 +15,10 @@ import nhannt.util.DBHelper;
 
 /**
  *
- * @author Admin
+ * @author NhanNT
  */
-public class UserInforDAO implements Serializable{
+public class UserInforDAO implements Serializable {
+
     UserInforDTO dto;
 
     public UserInforDTO getDto() {
@@ -27,9 +28,19 @@ public class UserInforDAO implements Serializable{
     public void setDto(UserInforDTO dto) {
         this.dto = dto;
     }
-    
-    public void createAccount(String username, String password, String name, String phone, String email) throws SQLException, NamingException
-    {
+
+    /**
+     * Create new account
+     *
+     * @param username
+     * @param password
+     * @param name
+     * @param phone
+     * @param email
+     * @throws SQLException
+     * @throws NamingException
+     */
+    public void createAccount(String username, String password, String name, String phone, String email) throws SQLException, NamingException {
         Connection con = null;
         PreparedStatement stm = null;
         try {
@@ -43,18 +54,26 @@ public class UserInforDAO implements Serializable{
             stm.setString(5, email);
             stm.setInt(6, 2);
             stm.executeUpdate();
-            
+
         } finally {
-            if(stm != null)
-            {
+            if (stm != null) {
                 stm.close();
             }
-            if(con != null)
-            {
+            if (con != null) {
                 con.close();
             }
         }
     }
+
+    /**
+     * Check login
+     *
+     * @param username
+     * @param passwordEncoded
+     * @return true/false
+     * @throws SQLException
+     * @throws NamingException
+     */
     public boolean checkLogin(String username, String passwordEncoded) throws SQLException, NamingException {
         Connection con = null;
         PreparedStatement stm = null;
@@ -69,7 +88,7 @@ public class UserInforDAO implements Serializable{
                 stm.setString(1, username);
                 stm.setString(2, passwordEncoded);
                 stm.setString(3, "Active");
-                
+
                 rs = stm.executeQuery();
                 if (rs.next()) {
                     this.dto = new UserInforDTO(username, passwordEncoded, rs.getString("fullName"), rs.getString("phone"), rs.getString("email"), rs.getInt("roleId"));
@@ -90,34 +109,49 @@ public class UserInforDAO implements Serializable{
         }
         return false;
     }
-    public void saveNewPassword(String username, String password) throws SQLException, NamingException
-    {
+
+    /**
+     * Save new password
+     *
+     * @param username
+     * @param password
+     * @throws SQLException
+     * @throws NamingException
+     */
+    public void saveNewPassword(String username, String password) throws SQLException, NamingException {
         Connection con = null;
         PreparedStatement stm = null;
         try {
-            con= DBHelper.makeConnection();
+            con = DBHelper.makeConnection();
             String sql = "UPDATE UserInfor SET newPassword = ? WHERE username = ?";
             stm = con.prepareStatement(sql);
             stm.setString(1, password);
             stm.setString(2, username);
             stm.executeUpdate();
         } finally {
-            if(stm!= null)
-            {
+            if (stm != null) {
                 stm.close();
             }
-            if(con != null)
-            {
+            if (con != null) {
                 con.close();
             }
         }
     }
-    public boolean confirmPassword(String username, String newPassword) throws SQLException, NamingException
-    {
+
+    /**
+     * Confirm password
+     *
+     * @param username
+     * @param newPassword
+     * @return
+     * @throws SQLException
+     * @throws NamingException
+     */
+    public boolean confirmPassword(String username, String newPassword) throws SQLException, NamingException {
         Connection con = null;
         PreparedStatement stm = null;
         try {
-            con= DBHelper.makeConnection();
+            con = DBHelper.makeConnection();
             String sql = "UPDATE UserInfor SET password = ? , newPassword = ? WHERE username = ? AND newPassword = ?";
             stm = con.prepareStatement(sql);
             stm.setString(1, newPassword);
@@ -125,17 +159,14 @@ public class UserInforDAO implements Serializable{
             stm.setString(3, username);
             stm.setString(4, newPassword);
             int row = stm.executeUpdate();
-            if(row > 0)
-            {
+            if (row > 0) {
                 return true;
             }
         } finally {
-            if(stm!= null)
-            {
+            if (stm != null) {
                 stm.close();
             }
-            if(con != null)
-            {
+            if (con != null) {
                 con.close();
             }
         }

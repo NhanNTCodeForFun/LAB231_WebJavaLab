@@ -21,7 +21,7 @@ import org.apache.log4j.Logger;
 
 /**
  *
- * @author Admin
+ * @author NhanNT
  */
 @WebServlet(name = "PostArticleServlet", urlPatterns = {"/PostArticleServlet"})
 public class PostArticleServlet extends HttpServlet {

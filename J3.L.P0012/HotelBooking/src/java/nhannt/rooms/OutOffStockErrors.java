@@ -9,9 +9,10 @@ import java.io.Serializable;
 
 /**
  *
- * @author Admin
+ * @author NhanNT
  */
-public class OutOffStockErrors implements Serializable{
+public class OutOffStockErrors implements Serializable {
+
     private String typeID;
     private int amount;
 
@@ -35,5 +36,5 @@ public class OutOffStockErrors implements Serializable{
     public void setAmount(int amount) {
         this.amount = amount;
     }
-    
+
 }

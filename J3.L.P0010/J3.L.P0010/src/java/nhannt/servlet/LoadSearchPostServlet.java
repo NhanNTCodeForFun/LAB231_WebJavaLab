@@ -20,7 +20,7 @@ import org.apache.log4j.Logger;
 
 /**
  *
- * @author Admin
+ * @author NhanNT
  */
 @WebServlet(name = "LoadSearchPostServlet", urlPatterns = {"/LoadSearchPostServlet"})
 public class LoadSearchPostServlet extends HttpServlet {

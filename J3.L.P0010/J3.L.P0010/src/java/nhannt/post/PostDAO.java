@@ -18,10 +18,21 @@ import nhannt.util.DBHelper;
 
 /**
  *
- * @author Admin
+ * @author NhanNT
  */
-public class PostDAO implements Serializable{
+public class PostDAO implements Serializable {
 
+    /**
+     * Insert post to Database
+     *
+     * @param email
+     * @param title
+     * @param content
+     * @param imageURL
+     * @return
+     * @throws SQLException
+     * @throws NamingException
+     */
     public boolean insertToPost(String email, String title, String content, String imageURL) throws SQLException, NamingException {
         Connection con = null;
         PreparedStatement stm = null;
@@ -54,7 +65,13 @@ public class PostDAO implements Serializable{
         return false;
     }
 
-
+    /**
+     * Count all post
+     *
+     * @return
+     * @throws SQLException
+     * @throws NamingException
+     */
     public int countAllPost() throws SQLException, NamingException {
         Connection con = null;
         PreparedStatement stm = null;
@@ -86,6 +103,14 @@ public class PostDAO implements Serializable{
         return numberPost;
     }
 
+    /**
+     * Count post after search
+     *
+     * @param searchValue
+     * @return
+     * @throws SQLException
+     * @throws NamingException
+     */
     public int countSearchPost(String searchValue) throws SQLException, NamingException {
         Connection con = null;
         PreparedStatement stm = null;
@@ -118,7 +143,16 @@ public class PostDAO implements Serializable{
         return numberPost;
     }
 
-    public ArrayList<PostDTO> getAllPostPage(String page) throws SQLException, NamingException {
+    /**
+     * Get all post of a page
+     *
+     * @param pageNumber
+     * @return
+     * @throws SQLException
+     * @throws NamingException
+     */
+
+    public ArrayList<PostDTO> getAllPostPage(String pageNumber) throws SQLException, NamingException {
         Connection con = null;
         PreparedStatement stm = null;
         ResultSet rs = null;
@@ -132,12 +166,11 @@ public class PostDAO implements Serializable{
                         + "WHERE rowNum > ? AND rowNum <= ?";
                 stm = con.prepareStatement(sql);
                 stm.setString(1, "Active");
-                stm.setInt(2, 20 * ((Integer.parseInt(page)) - 1));
-                stm.setInt(3, 20 * (Integer.parseInt(page)));
-                rs=stm.executeQuery();
-                while(rs.next())
-                {
-                    listResult.add(new PostDTO(rs.getInt("post_id"), rs.getString("title"), rs.getString("content"), rs.getString("image"), 
+                stm.setInt(2, 20 * ((Integer.parseInt(pageNumber)) - 1));
+                stm.setInt(3, 20 * (Integer.parseInt(pageNumber)));
+                rs = stm.executeQuery();
+                while (rs.next()) {
+                    listResult.add(new PostDTO(rs.getInt("post_id"), rs.getString("title"), rs.getString("content"), rs.getString("image"),
                             rs.getString("email"), rs.getTimestamp("date_created")));
                 }
             }
@@ -155,7 +188,16 @@ public class PostDAO implements Serializable{
         return listResult;
     }
 
-    public ArrayList<PostDTO> getSearchPostPage(String page, String searchValue) throws SQLException, NamingException {
+    /**
+     * Get post after search of a page
+     *
+     * @param pageNumber
+     * @param searchValue
+     * @return
+     * @throws SQLException
+     * @throws NamingException
+     */
+    public ArrayList<PostDTO> getSearchPostPage(String pageNumber, String searchValue) throws SQLException, NamingException {
         Connection con = null;
         PreparedStatement stm = null;
         ResultSet rs = null;
@@ -169,13 +211,12 @@ public class PostDAO implements Serializable{
                         + "WHERE rowNum >= ? AND rowNum <= ?";
                 stm = con.prepareStatement(sql);
                 stm.setString(1, "Active");
-                stm.setString(2, "%"+searchValue+"%");
-                stm.setInt(3, 20 * ((Integer.parseInt(page)) - 1));
-                stm.setInt(4, 20 * (Integer.parseInt(page)));
-                rs=stm.executeQuery();
-                while(rs.next())
-                {
-                    listResult.add(new PostDTO(rs.getInt("post_id"), rs.getString("title"), rs.getString("content"), 
+                stm.setString(2, "%" + searchValue + "%");
+                stm.setInt(3, 20 * ((Integer.parseInt(pageNumber)) - 1));
+                stm.setInt(4, 20 * (Integer.parseInt(pageNumber)));
+                rs = stm.executeQuery();
+                while (rs.next()) {
+                    listResult.add(new PostDTO(rs.getInt("post_id"), rs.getString("title"), rs.getString("content"),
                             rs.getString("image"), rs.getString("email"), rs.getTimestamp("date_created")));
                 }
             }
@@ -192,100 +233,113 @@ public class PostDAO implements Serializable{
         }
         return listResult;
     }
-    public boolean checkYourPost(int postId, String email) throws SQLException, NamingException
-    {
+
+    /**
+     * Check post is belong to current user or not
+     *
+     * @param postId
+     * @param email
+     * @return
+     * @throws SQLException
+     * @throws NamingException
+     */
+    public boolean checkYourPost(int postId, String email) throws SQLException, NamingException {
         boolean isYourPost = false;
         Connection con = null;
         PreparedStatement stm = null;
         ResultSet rs = null;
-        try{
+        try {
             con = DBHelper.makeConnection();
             String sql = "SELECT post_id FROM Post WHERE post_id = ? AND email = ?";
-            stm=con.prepareStatement(sql);
+            stm = con.prepareStatement(sql);
             stm.setInt(1, postId);
             stm.setString(2, email);
-            rs=stm.executeQuery();
-            if(rs.next())
-            {
+            rs = stm.executeQuery();
+            if (rs.next()) {
                 isYourPost = true;
             }
-        } finally{
-            if(rs != null)
-            {
+        } finally {
+            if (rs != null) {
                 rs.close();
             }
-            if(stm != null)
-            {
+            if (stm != null) {
                 stm.close();
             }
-            if(con != null)
-            {
+            if (con != null) {
                 con.close();
             }
         }
         return isYourPost;
     }
-    public boolean deletePost(String postId) throws SQLException, NamingException
-    {
+
+    /**
+     * Delete post
+     *
+     * @param postId
+     * @return
+     * @throws SQLException
+     * @throws NamingException
+     */
+    public boolean deletePost(String postId) throws SQLException, NamingException {
         boolean result = false;
         Connection con = null;
         PreparedStatement stm = null;
-        try{
-            con=DBHelper.makeConnection();
+        try {
+            con = DBHelper.makeConnection();
             String sql = "UPDATE Post SET post_status = ? WHERE post_id = ?";
-            stm=con.prepareStatement(sql);
+            stm = con.prepareStatement(sql);
             stm.setString(1, "Deleted");
             stm.setString(2, postId);
-            int row =stm.executeUpdate();
-            if(row > 0)
-            {
+            int row = stm.executeUpdate();
+            if (row > 0) {
                 result = true;
             }
         } finally {
-            if(stm != null)
-            {
+            if (stm != null) {
                 stm.close();
             }
-            if(con != null)
-            {
+            if (con != null) {
                 con.close();
             }
         }
         return result;
     }
-    public PostDTO getPost(int postId) throws SQLException, NamingException
-    {
+
+    /**
+     * Get a post
+     *
+     * @param postId
+     * @return
+     * @throws SQLException
+     * @throws NamingException
+     */
+    public PostDTO getPost(int postId) throws SQLException, NamingException {
         Connection con = null;
         PreparedStatement stm = null;
         ResultSet rs = null;
         PostDTO postDTO = null;
-        try
-        {
+        try {
             con = DBHelper.makeConnection();
             String sql = "SELECT post_id, title, content, image, email, date_created FROM Post WHERE post_id = ? AND post_status = ?";
             stm = con.prepareStatement(sql);
             stm.setInt(1, postId);
             stm.setString(2, "Active");
             rs = stm.executeQuery();
-            if(rs.next())
-            {
+            if (rs.next()) {
                 postDTO = new PostDTO(postId, rs.getString("title"), rs.getString("content"), rs.getString("image"), rs.getString("email"), rs.getTimestamp("date_created"));
             }
         } finally {
-            if( rs  != null)
-            {
+            if (rs != null) {
                 rs.close();
             }
-            if(stm != null)
-            {
+            if (stm != null) {
                 stm.close();
             }
-            if(con != null)
-            {
+            if (con != null) {
                 con.close();
             }
         }
         return postDTO;
-        
+
     }
 }

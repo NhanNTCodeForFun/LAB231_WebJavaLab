@@ -9,14 +9,14 @@ import java.io.Serializable;
 
 /**
  *
- * @author Admin
+ * @author NhanNT
  */
-public class CreateDiscountErrors implements Serializable{
+public class CreateDiscountErrors implements Serializable {
+
     private String invalidCode;
     private String existedCode;
     private String invalidName;
     private String invalidValue;
- 
 
     public CreateDiscountErrors() {
     }
@@ -28,7 +28,6 @@ public class CreateDiscountErrors implements Serializable{
     public void setInvalidValue(String invalidValue) {
         this.invalidValue = invalidValue;
     }
-    
 
     public String getInvalidCode() {
         return invalidCode;
@@ -54,7 +53,4 @@ public class CreateDiscountErrors implements Serializable{
         this.invalidName = invalidName;
     }
 
-  
-    
-    
 }

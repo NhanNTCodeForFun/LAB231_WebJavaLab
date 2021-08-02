@@ -17,7 +17,7 @@ import nhannt.util.DBHelper;
 
 /**
  *
- * @author Admin
+ * @author NhanNT
  */
 public class CategoryDAO implements Serializable {
 

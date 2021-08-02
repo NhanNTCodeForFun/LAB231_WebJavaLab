@@ -9,9 +9,10 @@ import java.io.Serializable;
 
 /**
  *
- * @author Admin
+ * @author NhanNT
  */
-public class PostArticleError implements Serializable{
+public class PostArticleError implements Serializable {
+
     private String emptyTitle;
     private String emptyContent;
 
@@ -30,6 +31,5 @@ public class PostArticleError implements Serializable{
     public void setEmptyContent(String emptyContent) {
         this.emptyContent = emptyContent;
     }
-    
-    
+
 }

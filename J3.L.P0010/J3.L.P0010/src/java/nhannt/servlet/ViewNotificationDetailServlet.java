@@ -20,7 +20,7 @@ import org.apache.log4j.Logger;
 
 /**
  *
- * @author Admin
+ * @author NhanNT
  */
 @WebServlet(name = "ViewNotificationDetailServlet", urlPatterns = {"/ViewNotificationDetailServlet"})
 public class ViewNotificationDetailServlet extends HttpServlet {

@@ -15,12 +15,21 @@ import nhannt.util.DBHelper;
 
 /**
  *
- * @author Admin
+ * @author NhanNT
  */
 public class UserInforDAO implements Serializable {
 
     private UserInforDTO dto;
 
+    /**
+     * Check login
+     *
+     * @param email
+     * @param passwordEncoded
+     * @return true/false
+     * @throws SQLException
+     * @throws NamingException
+     */
     public boolean checkLogin(String email, String passwordEncoded) throws SQLException, NamingException {
         Connection con = null;
         PreparedStatement stm = null;
@@ -68,6 +77,16 @@ public class UserInforDAO implements Serializable {
         this.dto = dto;
     }
 
+    /**
+     * Create a new account
+     *
+     * @param email
+     * @param passwordEncoded
+     * @param fullname
+     * @return
+     * @throws SQLException
+     * @throws NamingException
+     */
     public boolean createAccount(String email, String passwordEncoded, String fullname) throws SQLException, NamingException {
         //1. Open connection
         Connection con = null;
@@ -105,6 +124,14 @@ public class UserInforDAO implements Serializable {
         return false;
     }
 
+    /**
+     * Get name of user
+     *
+     * @param email
+     * @return
+     * @throws SQLException
+     * @throws NamingException
+     */
     public String getName(String email) throws SQLException, NamingException {
         Connection con = null;
         PreparedStatement stm = null;
@@ -139,8 +166,16 @@ public class UserInforDAO implements Serializable {
         }
         return name;
     }
-    public boolean checkNewAccount(String email) throws NamingException, SQLException
-    {
+
+    /**
+     * Check the account is new or not
+     *
+     * @param email
+     * @return true/false
+     * @throws NamingException
+     * @throws SQLException
+     */
+    public boolean checkNewAccount(String email) throws NamingException, SQLException {
         Connection con = null;
         PreparedStatement stm = null;
         ResultSet rs = null;
@@ -148,12 +183,11 @@ public class UserInforDAO implements Serializable {
         try {
             con = DBHelper.makeConnection();
             String sql = "SELECT email, user_status FROM UserInfor WHERE email=? AND user_status = 'New'";
-            
-            stm=con.prepareStatement(sql);
+
+            stm = con.prepareStatement(sql);
             stm.setString(1, email);
             rs = stm.executeQuery();
-            if(rs.next())
-            {
+            if (rs.next()) {
                 result = true;
             }
         } finally {
@@ -169,26 +203,33 @@ public class UserInforDAO implements Serializable {
         }
         return result;
     }
-    public boolean AcctiveAccount(String email) throws NamingException, SQLException
-    {
+
+    /**
+     * Active new account
+     *
+     * @param email
+     * @return
+     * @throws NamingException
+     * @throws SQLException
+     */
+    public boolean ActiveAccount(String email) throws NamingException, SQLException {
         Connection con = null;
         PreparedStatement stm = null;
-       
+
         boolean result = false;
         try {
             con = DBHelper.makeConnection();
             String sql = "UPDATE UserInfor SET user_status = 'Active' WHERE email = ?";
-            
-            stm=con.prepareStatement(sql);
+
+            stm = con.prepareStatement(sql);
             stm.setString(1, email);
             int row = stm.executeUpdate();
-            if(row >0)
-            {
+            if (row > 0) {
                 result = true;
             }
-            
+
         } finally {
-            
+
             if (stm != null) {
                 stm.close();
             }

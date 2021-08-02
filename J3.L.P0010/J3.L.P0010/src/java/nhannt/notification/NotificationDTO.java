@@ -10,7 +10,7 @@ import java.sql.Timestamp;
 
 /**
  *
- * @author Admin
+ * @author NhanNT
  */
 public class NotificationDTO implements Serializable{
     private int notificationId;

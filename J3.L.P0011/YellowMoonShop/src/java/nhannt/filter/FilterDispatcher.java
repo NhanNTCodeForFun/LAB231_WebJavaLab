@@ -23,7 +23,7 @@ import org.apache.log4j.Logger;
 
 /**
  *
- * @author Admin
+ * @author NhanNT
  */
 public class FilterDispatcher implements Filter {
     

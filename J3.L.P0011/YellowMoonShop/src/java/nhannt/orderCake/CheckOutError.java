@@ -9,7 +9,7 @@ import java.io.Serializable;
 
 /**
  *
- * @author Admin
+ * @author NhanNT
  */
 public class CheckOutError implements Serializable {
 

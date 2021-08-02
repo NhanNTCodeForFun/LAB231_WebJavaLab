@@ -11,9 +11,10 @@ import nhannt.comment.Comment;
 
 /**
  *
- * @author Admin
+ * @author NhanNT
  */
-public class Post implements Serializable{
+public class Post implements Serializable {
+
     private String name;
     private PostDTO postDTO;
     private int like;
@@ -87,6 +88,5 @@ public class Post implements Serializable{
     public void setCommentList(ArrayList<Comment> commentList) {
         this.commentList = commentList;
     }
-    
-    
+
 }

@@ -16,11 +16,18 @@ import nhannt.util.DBHelper;
 
 /**
  *
- * @author Admin
+ * @author NhanNT
  */
-public class RoomTypeDAO implements Serializable{
-    public ArrayList<String> getListRoomType() throws SQLException, NamingException
-    {
+public class RoomTypeDAO implements Serializable {
+
+    /**
+     * Get list room type
+     *
+     * @return listRoomType
+     * @throws SQLException
+     * @throws NamingException
+     */
+    public ArrayList<String> getListRoomType() throws SQLException, NamingException {
         Connection con = null;
         PreparedStatement stm = null;
         ResultSet rs = null;
@@ -30,28 +37,33 @@ public class RoomTypeDAO implements Serializable{
             String sql = "SELECT DISTINCT typeName FROM RoomType";
             stm = con.prepareStatement(sql);
             rs = stm.executeQuery();
-            while(rs.next())
-            {
+            while (rs.next()) {
                 listRoomType.add(rs.getString("typeName"));
             }
-        } finally  {
-            if(rs != null)
-            {
+        } finally {
+            if (rs != null) {
                 rs.close();
             }
-            if( stm != null)
-            {
+            if (stm != null) {
                 stm.close();
             }
-            if( con != null)
-            {
+            if (con != null) {
                 con.close();
             }
         }
         return listRoomType;
     }
-    public ArrayList<RoomTypeDTO> getListRoomTypeByHotelNameAndType(String hotelName, String typeName) throws SQLException, NamingException
-    {
+
+    /**
+     * Get list room type by hotel name and type
+     *
+     * @param hotelName
+     * @param typeName
+     * @return
+     * @throws SQLException
+     * @throws NamingException
+     */
+    public ArrayList<RoomTypeDTO> getListRoomTypeByHotelNameAndType(String hotelName, String typeName) throws SQLException, NamingException {
         Connection con = null;
         PreparedStatement stm = null;
         ResultSet rs = null;
@@ -60,27 +72,23 @@ public class RoomTypeDAO implements Serializable{
             con = DBHelper.makeConnection();
             String sql = "SELECT typeID, typeName, r.description, price, r.hotelID FROM RoomType r INNER JOIN Hotels h ON r.hotelID = h.hotelID WHERE hotelName like ? and typeName = ? ";
             stm = con.prepareStatement(sql);
-            stm.setString(1, "%"+hotelName+"%");
+            stm.setString(1, "%" + hotelName + "%");
             stm.setString(2, typeName);
             rs = stm.executeQuery();
-            while(rs.next())
-            {
+            while (rs.next()) {
                 listRoomType.add(new RoomTypeDTO(rs.getString("typeID"), rs.getString("typeName"), rs.getString("description"), rs.getFloat("price"), rs.getString("hotelID")));
             }
         } finally {
-            if(rs != null)
-            {
+            if (rs != null) {
                 rs.close();
             }
-            if( stm != null)
-            {
+            if (stm != null) {
                 stm.close();
             }
-            if( con != null)
-            {
+            if (con != null) {
                 con.close();
             }
         }
-        return listRoomType;          
+        return listRoomType;
     }
 }

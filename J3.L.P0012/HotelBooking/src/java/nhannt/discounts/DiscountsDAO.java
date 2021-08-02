@@ -16,10 +16,20 @@ import nhannt.util.DBHelper;
 
 /**
  *
- * @author Admin
+ * @author NhanNT
  */
 public class DiscountsDAO implements Serializable {
 
+    /**
+     * Create discount code
+     *
+     * @param code
+     * @param name
+     * @param value
+     * @param date
+     * @throws SQLException
+     * @throws NamingException
+     */
     public void createDiscount(String code, String name, float value, String date) throws SQLException, NamingException {
         Connection con = null;
         PreparedStatement stm = null;
@@ -42,6 +52,14 @@ public class DiscountsDAO implements Serializable {
         }
     }
 
+    /**
+     * Check discount code
+     *
+     * @param discountCode
+     * @return
+     * @throws SQLException
+     * @throws NamingException
+     */
     public float checkDiscountCode(String discountCode) throws SQLException, NamingException {
         float value = 0;
         Connection con = null;

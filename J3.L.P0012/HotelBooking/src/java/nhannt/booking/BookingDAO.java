@@ -17,10 +17,20 @@ import nhannt.util.DBHelper;
 
 /**
  *
- * @author Admin
+ * @author NhanNT
  */
 public class BookingDAO implements Serializable {
 
+    /**
+     * Insert booking to Database
+     *
+     * @param bookID
+     * @param username
+     * @param discountCode
+     * @param discountValue
+     * @throws SQLException
+     * @throws NamingException
+     */
     public void insertBooking(String bookID, String username, String discountCode, float discountValue) throws SQLException, NamingException {
         Connection con = null;
         PreparedStatement stm = null;
@@ -45,6 +55,14 @@ public class BookingDAO implements Serializable {
         }
     }
 
+    /**
+     * Check existing booking in Database
+     *
+     * @param bookID
+     * @return true/false
+     * @throws SQLException
+     * @throws NamingException
+     */
     public boolean checkExistBookingID(String bookID) throws SQLException, NamingException {
         Connection con = null;
         PreparedStatement stm = null;
@@ -71,8 +89,16 @@ public class BookingDAO implements Serializable {
         }
         return false;
     }
-    public boolean confirmBooking(String bookID) throws SQLException, NamingException
-    {
+
+    /**
+     * Confirm booking
+     *
+     * @param bookID
+     * @return if success return true, else return false
+     * @throws SQLException
+     * @throws NamingException
+     */
+    public boolean confirmBooking(String bookID) throws SQLException, NamingException {
         Connection con = null;
         PreparedStatement stm = null;
         try {
@@ -81,11 +107,10 @@ public class BookingDAO implements Serializable {
             stm = con.prepareStatement(sql);
             stm.setString(1, bookID);
             int row = stm.executeUpdate();
-            if(row > 0)
-            {
+            if (row > 0) {
                 return true;
             }
-        } finally{
+        } finally {
             if (stm != null) {
                 stm.close();
             }

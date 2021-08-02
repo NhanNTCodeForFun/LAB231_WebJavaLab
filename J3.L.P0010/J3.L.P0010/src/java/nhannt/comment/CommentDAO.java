@@ -18,10 +18,18 @@ import nhannt.util.DBHelper;
 
 /**
  *
- * @author Admin
+ * @author NhanNT
  */
 public class CommentDAO implements Serializable {
 
+    /**
+     * Count comment
+     *
+     * @param postId
+     * @return
+     * @throws SQLException
+     * @throws NamingException
+     */
     public int countComment(int postId) throws SQLException, NamingException {
         int count = 0;
         Connection con = null;
@@ -51,6 +59,15 @@ public class CommentDAO implements Serializable {
         return count;
     }
 
+    /**
+     * Check comment is belong to current user or not
+     *
+     * @param commentId
+     * @param email
+     * @return
+     * @throws SQLException
+     * @throws NamingException
+     */
     public boolean checkYourComment(int commentId, String email) throws SQLException, NamingException {
         boolean isYourComment = false;
         Connection con = null;
@@ -80,6 +97,16 @@ public class CommentDAO implements Serializable {
         return isYourComment;
     }
 
+    /**
+     * Add comment to Database
+     *
+     * @param email
+     * @param postId
+     * @param content
+     * @return
+     * @throws SQLException
+     * @throws NamingException
+     */
     public boolean addComment(String email, String postId, String content) throws SQLException, NamingException {
         boolean result = false;
         Connection con = null;
@@ -108,6 +135,14 @@ public class CommentDAO implements Serializable {
         return result;
     }
 
+    /**
+     * Delete comment
+     *
+     * @param commentId
+     * @return
+     * @throws SQLException
+     * @throws NamingException
+     */
     public boolean deleteComment(String commentId) throws SQLException, NamingException {
         boolean result = false;
         Connection con = null;
@@ -133,6 +168,14 @@ public class CommentDAO implements Serializable {
         return result;
     }
 
+    /**
+     * Get comment of a post
+     *
+     * @param postId
+     * @return
+     * @throws SQLException
+     * @throws NamingException
+     */
     public ArrayList<CommentDTO> getComment(int postId) throws SQLException, NamingException {
         Connection con = null;
         PreparedStatement stm = null;
@@ -162,6 +205,13 @@ public class CommentDAO implements Serializable {
         return listComment;
     }
 
+    /**
+     * Get last comment id
+     *
+     * @return
+     * @throws SQLException
+     * @throws NamingException
+     */
     public int getLastCommentId() throws SQLException, NamingException {
         int lastCommentId = 0;
         Connection con = null;

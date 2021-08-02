@@ -15,9 +15,10 @@ import java.io.Serializable;
 
 /**
  *
- * @author Admin
+ * @author NhanNT
  */
-public class uploadFile implements Serializable{
+public class uploadFile implements Serializable {
+
     public static void copyFileUsingStream(File source, File dest) throws IOException {
         InputStream is = null;
         OutputStream os = null;
@@ -30,14 +31,16 @@ public class uploadFile implements Serializable{
                 os.write(buffer, 0, length);
             }
         } finally {
-            if(is != null)
-            is.close();
-            if(os!= null){
-            os.close();
+            if (is != null) {
+                is.close();
+            }
+            if (os != null) {
+                os.close();
             }
         }
     }
-    public static void delteFile(File source){
+
+    public static void delteFile(File source) {
         source.delete();
     }
 }

@@ -14,10 +14,21 @@ import nhannt.util.DBHelper;
 
 /**
  *
- * @author Admin
+ * @author NhanNT
  */
 public class BookingDetailsDAO implements Serializable {
 
+    /**
+     * Insert booking detail to Database
+     *
+     * @param bookID
+     * @param roomID
+     * @param checkInDate
+     * @param checkOutDate
+     * @param price
+     * @throws SQLException
+     * @throws NamingException
+     */
     public void insertBookingDetail(String bookID, String roomID, String checkInDate, String checkOutDate, float price) throws SQLException, NamingException {
         Connection con = null;
         PreparedStatement stm = null;
@@ -42,6 +53,13 @@ public class BookingDetailsDAO implements Serializable {
         }
     }
 
+    /**
+     * Confirm booking detail
+     *
+     * @param bookID
+     * @throws SQLException
+     * @throws NamingException
+     */
     public void confirmBookingDetails(String bookID) throws SQLException, NamingException {
         Connection con = null;
         PreparedStatement stm = null;

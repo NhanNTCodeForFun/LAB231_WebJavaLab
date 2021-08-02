@@ -23,7 +23,7 @@ import org.apache.log4j.Logger;
 
 /**
  *
- * @author Admin
+ * @author NhanNT
  */
 @WebServlet(name = "ConfirmResetPasswordServlet", urlPatterns = {"/ConfirmResetPasswordServlet"})
 public class ConfirmResetPasswordServlet extends HttpServlet {

@@ -13,15 +13,15 @@ import java.util.Date;
 
 /**
  *
- * @author Admin
+ * @author NhanNT
  */
 public class DateCaculator implements Serializable {
 
     public long diffDate(String begin, String end) throws ParseException {
         DateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
-        Date date1 = null;
-        Date date2 = null;
+        Date date1;
+        Date date2;
         long getDaysDiff;
 
         date1 = simpleDateFormat.parse(begin);

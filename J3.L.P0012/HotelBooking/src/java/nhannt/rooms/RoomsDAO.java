@@ -16,10 +16,20 @@ import nhannt.util.DBHelper;
 
 /**
  *
- * @author Admin
+ * @author NhanNT
  */
 public class RoomsDAO implements Serializable {
 
+    /**
+     * Get amount of room
+     *
+     * @param typeID
+     * @param checkInDate
+     * @param checkOutDate
+     * @return count
+     * @throws SQLException
+     * @throws NamingException
+     */
     public int getAmount(String typeID, String checkInDate, String checkOutDate) throws SQLException, NamingException {
         Connection con = null;
         PreparedStatement stm = null;
@@ -55,7 +65,18 @@ public class RoomsDAO implements Serializable {
         return count;
     }
 
-    public ArrayList<RoomsDTO> getListRoom(int Amount,String typeID, String checkInDate, String checkOutDate) throws SQLException, NamingException {
+    /**
+     * Get list room
+     *
+     * @param Amount
+     * @param typeID
+     * @param checkInDate
+     * @param checkOutDate
+     * @return
+     * @throws SQLException
+     * @throws NamingException
+     */
+    public ArrayList<RoomsDTO> getListRoom(int Amount, String typeID, String checkInDate, String checkOutDate) throws SQLException, NamingException {
         Connection con = null;
         PreparedStatement stm = null;
         ResultSet rs = null;
@@ -75,7 +96,7 @@ public class RoomsDAO implements Serializable {
             rs = stm.executeQuery();
             int count = 0;
             while (rs.next() && count < Amount) {
-                count ++;
+                count++;
                 listRoom.add(new RoomsDTO(rs.getString("roomID"), rs.getString("roomName"), rs.getString("typeID"), rs.getString("hotelID")));
             }
         } finally {

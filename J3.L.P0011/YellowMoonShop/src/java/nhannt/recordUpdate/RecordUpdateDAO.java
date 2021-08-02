@@ -16,7 +16,7 @@ import nhannt.util.DBHelper;
 
 /**
  *
- * @author Admin
+ * @author NhanNT
  */
 public class RecordUpdateDAO implements Serializable {
 

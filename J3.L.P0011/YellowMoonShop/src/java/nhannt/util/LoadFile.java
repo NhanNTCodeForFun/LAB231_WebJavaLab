@@ -17,9 +17,10 @@ import javax.servlet.ServletContextEvent;
 
 /**
  *
- * @author Admin
+ * @author NhanNT
  */
-public class LoadFile implements Serializable{
+public class LoadFile implements Serializable {
+
     private Map<String, String> siteMap;
 
     public Map<String, String> getSiteMap() {
@@ -32,8 +33,6 @@ public class LoadFile implements Serializable{
 
     public LoadFile() {
     }
-    
-    
 
     public void loadFile(String filename, ServletContextEvent sce) throws IOException {
         ServletContext context = sce.getServletContext();
@@ -53,9 +52,8 @@ public class LoadFile implements Serializable{
                     String arr[] = line.split("=");
                     String action = arr[0];
                     String path = arr[1];
-                    if(this.siteMap == null)
-                    {
-                        this.siteMap=new HashMap<>();
+                    if (this.siteMap == null) {
+                        this.siteMap = new HashMap<>();
                     }
                     this.siteMap.put(action, path);
                 }

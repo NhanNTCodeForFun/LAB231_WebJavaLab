@@ -9,9 +9,10 @@ import java.io.Serializable;
 
 /**
  *
- * @author Admin
+ * @author NhanNT
  */
-public class HotelsDTO implements Serializable{
+public class HotelsDTO implements Serializable {
+
     private String hotelID;
     private String hotelName;
     private String area;
@@ -85,5 +86,5 @@ public class HotelsDTO implements Serializable{
     public void setHotline(String hotline) {
         this.hotline = hotline;
     }
-    
+
 }

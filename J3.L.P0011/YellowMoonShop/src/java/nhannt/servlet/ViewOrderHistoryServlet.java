@@ -26,7 +26,7 @@ import org.apache.log4j.Logger;
 
 /**
  *
- * @author Admin
+ * @author NhanNT
  */
 @WebServlet(name = "ViewOrderHistoryServlet", urlPatterns = {"/ViewOrderHistoryServlet"})
 public class ViewOrderHistoryServlet extends HttpServlet {

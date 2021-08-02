@@ -9,9 +9,10 @@ import java.io.Serializable;
 
 /**
  *
- * @author Admin
+ * @author NhanNT
  */
-public class Comment implements Serializable{
+public class Comment implements Serializable {
+
     private String name;
     private CommentDTO commentDTO;
     private boolean isYourComment;
@@ -45,6 +46,5 @@ public class Comment implements Serializable{
     public void setCommentDTO(CommentDTO commentDTO) {
         this.commentDTO = commentDTO;
     }
-    
-    
+
 }

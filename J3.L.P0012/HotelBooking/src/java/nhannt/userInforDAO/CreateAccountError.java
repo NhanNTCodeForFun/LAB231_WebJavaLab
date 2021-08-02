@@ -9,9 +9,10 @@ import java.io.Serializable;
 
 /**
  *
- * @author Admin
+ * @author NhanNT
  */
-public class CreateAccountError implements Serializable{
+public class CreateAccountError implements Serializable {
+
     private String invalidUsername;
     private String existedUsername;
     private String invalidPassword;
@@ -69,6 +70,5 @@ public class CreateAccountError implements Serializable{
     public void setInvalidConfirm(String invalidConfirm) {
         this.invalidConfirm = invalidConfirm;
     }
-    
-    
+
 }

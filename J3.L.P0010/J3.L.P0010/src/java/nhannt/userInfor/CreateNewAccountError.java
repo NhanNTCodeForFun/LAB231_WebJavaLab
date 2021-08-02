@@ -9,9 +9,10 @@ import java.io.Serializable;
 
 /**
  *
- * @author Admin
+ * @author NhanNT
  */
-public class CreateNewAccountError implements Serializable{
+public class CreateNewAccountError implements Serializable {
+
     private String passwordLengtErr;
     private String confirmNotMatched;
     private String fullNameLengtErr;
@@ -25,7 +26,6 @@ public class CreateNewAccountError implements Serializable{
     public void setEmailIsIncorrectFormat(String emailIsIncorrectFomat) {
         this.emailIsIncorrectFormat = emailIsIncorrectFomat;
     }
-    
 
     public String getPasswordLengtErr() {
         return passwordLengtErr;
@@ -58,5 +58,5 @@ public class CreateNewAccountError implements Serializable{
     public void setEmailIsExisted(String emailIsExisted) {
         this.emailIsExisted = emailIsExisted;
     }
-    
+
 }

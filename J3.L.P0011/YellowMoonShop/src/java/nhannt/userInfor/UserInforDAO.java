@@ -15,7 +15,7 @@ import nhannt.util.DBHelper;
 
 /**
  *
- * @author Admin
+ * @author NhanNT
  */
 public class UserInforDAO implements Serializable {
 
@@ -29,6 +29,14 @@ public class UserInforDAO implements Serializable {
         this.dto = dto;
     }
 
+    /**
+     * Check existing email
+     *
+     * @param email
+     * @return
+     * @throws SQLException
+     * @throws NamingException
+     */
     public boolean checkExistEmail(String email) throws SQLException, NamingException {
         Connection con = null;
         PreparedStatement stm = null;
@@ -56,6 +64,14 @@ public class UserInforDAO implements Serializable {
         return false;
     }
 
+    /**
+     * Create new account for email
+     *
+     * @param email
+     * @param name
+     * @throws SQLException
+     * @throws NamingException
+     */
     public void createAccountForGmail(String email, String name) throws SQLException, NamingException {
         Connection con = null;
         PreparedStatement stm = null;
@@ -79,6 +95,16 @@ public class UserInforDAO implements Serializable {
             }
         }
     }
+
+    /**
+     * Check Login
+     *
+     * @param username
+     * @param password
+     * @return
+     * @throws SQLException
+     * @throws NamingException
+     */
 
     public boolean checkLogin(String username, String password) throws SQLException, NamingException {
         Connection con = null;
